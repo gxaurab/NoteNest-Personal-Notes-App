@@ -38,7 +38,7 @@ const loginController = async (req:Request, res: Response) => {
             expiresIn: '1d'
         } )
 
-        res.status(200).json({"token":token})
+        res.json({"token":token})
     } catch (error) {
         res.status(500).json({"message": "Error Registering User"})
     }

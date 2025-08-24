@@ -1,10 +1,11 @@
-// import GetData from "../components/Data/GetData"
+import GetData from "../components/Data/GetData"
 
 const DashboardPage = () => {
   return (
     <div>Dashboard
-      {/* <GetData/> */}
-
+      <section>
+        <GetData/>
+      </section>
     </div>
   )
 }

@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router"
 import Home from "./pages/Home"
 import { LoginPage } from "./pages/Authentication/LoginPage"
 import Dashboard from "./pages/DashboardPage"
-import DashboardLayout from "./pages/DashboardLayout"
+import DashboardLayout from "./Layout/DashboardLayout"
 import SignupPage from "./pages/Authentication/SignupPage"
 
 function App() {
