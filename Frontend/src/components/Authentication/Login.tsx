@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query"
-import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router"
+import api from "../../config/axios.config"
 
 interface LoginInput {
     username: string
@@ -9,14 +9,12 @@ interface LoginInput {
 }
 
 interface LoginResponse {
-    token: string
+    accessToken: string
     // user: { id: string; username: string }
 }
 
-const BaseURL = import.meta.env.VITE_BASE_URL
-
 const loginUser = async (input: LoginInput): Promise<LoginResponse> => {
-    const response = await axios.post(`${BaseURL}/auth/login`, input)
+    const response = await api.post("/auth/login", input)
     return response.data
 }
 
@@ -28,7 +26,7 @@ const Login = () => {
         mutationFn: loginUser,
         onSuccess: (data) => {
 
-            localStorage.setItem("token", data.token)
+            localStorage.setItem("accessToken", data.accessToken)
             console.log("Successfully logged in")
             navigate("/dashboard")
         },
