@@ -1,5 +1,4 @@
 import { model, Schema } from "mongoose";
-import { ref } from "process";
 
 const noteSchema = new Schema({
     title: { type: String, required: true },

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import api from "../../config/axios.config"
+import api from "../../config/Axios/axios.config"
 
 const Logout = () => {
 
