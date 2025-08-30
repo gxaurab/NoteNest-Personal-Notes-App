@@ -1,15 +1,14 @@
-import { useNavigate } from "react-router"
+import { Navigate, Outlet } from "react-router";
+import { useAuthStore } from "../store/authStore";
 
 const AdminProtectedRoute = () => {
+  const { role } = useAuthStore();
 
-    const navigate = useNavigate()
-    const accessToken = localStorage.getItem("accessToken")
-    if(!accessToken){
-        return navigate('/login')
-    }
+  if (role !== "ADMIN") {
+    return <Navigate to="/dashboard" replace />;
+  }
 
+  return <Outlet />; 
+};
 
-
-}
-
-export default AdminProtectedRoute
+export default AdminProtectedRoute;

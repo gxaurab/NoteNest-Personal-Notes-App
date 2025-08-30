@@ -26,6 +26,7 @@ const loginController = async (req:Request, res: Response) => {
         }
         const payload ={
             "_id":getUser?._id,
+            "username": username,
             "role": getUser?.role
         }
         const ACCESS_SECRET = process.env.ACCESS_SECRET as string

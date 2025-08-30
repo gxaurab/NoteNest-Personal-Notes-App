@@ -5,6 +5,7 @@ import api from "../../config/Axios/axios.config"
 import { useForm } from "react-hook-form"
 import { loginFormSchema, type loginFormElements } from "../../config/zod/schema"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useAuthStore } from "../../store/authStore"
 
 // interface LoginInput {
 //     username: string
@@ -23,6 +24,7 @@ const loginUser = async (input: loginFormElements): Promise<LoginResponse> => {
 
 const Login = () => {
     const navigate = useNavigate()
+    const {setUser} = useAuthStore()
     const [backendError, setBackendError] = useState<string>("")
 
     const {register, handleSubmit, formState: {errors}} = useForm({
@@ -34,7 +36,9 @@ const Login = () => {
         mutationFn: loginUser,
         onSuccess: (data) => {
 
-            localStorage.setItem("accessToken", data.accessToken)
+            // localStorage.setItem("accessToken", data.accessToken)
+            //changed to 
+            setUser(data.accessToken)
             console.log("Successfully logged in")
             navigate("/dashboard")
         },
@@ -62,7 +66,7 @@ const Login = () => {
     return (
         <div className="flex flex-col items-center mt-5 gap-3">
             Login Here
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2 w-fit">
+            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col shadow-xl  gap-2 w-fit">
                 <label htmlFor="username">Username</label>
                 <input
                     type="text"
@@ -100,6 +104,8 @@ const Login = () => {
                 {backendError && <span className="text-red-600"> {backendError}</span>}
 
             </form>
+
+            <p className="text-sm mt-5 text-yellow-600">Please note That i have not included any regex for the password but it does have the min and max length to ease for the development</p>
         </div>
     )
 }

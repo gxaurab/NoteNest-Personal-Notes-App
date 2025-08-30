@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import api from '../../config/Axios/axios.config';
-import Logout from '../Authentication/Logout';
 import DeleteData from '../Data/DeleteData';
 
 interface Note {
@@ -59,7 +58,6 @@ const DashboardGetItems = () => {
           <p>No notes found.</p>
         )}
       </ul>
-      <Logout />
     </div>
   );
 };

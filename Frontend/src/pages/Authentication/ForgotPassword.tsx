@@ -30,7 +30,7 @@ const ForgotPassword = () => {
 
   return (
     <div className="flex flex-col justify-center m-10 items-center gap-4">
-      <h2 className="text-xl font-semibold">Forgot Password</h2>
+      <h2 className="text-xl hover:underline font-semibold">Forgot Password</h2>
 
       <form className="flex gap-2" onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="email">Your Existing Email:</label>
