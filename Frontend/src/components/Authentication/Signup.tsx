@@ -72,7 +72,6 @@ const Signup = () => {
         />
         {errors.password && <span className="text-red-500">{errors.password.message}</span>}
 
-        {/* Backend error */}
         {backendError && <p className="text-red-600">{backendError}</p>}
 
         <button 

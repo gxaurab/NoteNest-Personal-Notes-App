@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
-import { useNavigate } from "react-router"
+import { Link, useNavigate } from "react-router"
 import api from "../../config/Axios/axios.config"
 import { useForm } from "react-hook-form"
 import { loginFormSchema, type loginFormElements } from "../../config/zod/schema"
@@ -93,6 +93,8 @@ const Login = () => {
                 <button type="submit" className="bg-blue-500 mx-auto p-2 text-white hover:bg-blue-800" disabled={loginMutation.isPending}>
                     {loginMutation.isPending ? "Logging in..." : "Submit"}
                 </button>
+
+                <Link to="/forgot-password" className="text-blue-700 text-sm">Forgot Password ?</Link>
 
                 {errors.root && <span className="text-red-500"> {errors.root?.message} </span>}
                 {backendError && <span className="text-red-600"> {backendError}</span>}
