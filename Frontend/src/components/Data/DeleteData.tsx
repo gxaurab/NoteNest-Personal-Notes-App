@@ -18,7 +18,7 @@ const DeleteData = ({ id }: DeleteDataProps) => {
     mutationFn: deleteItem, 
     onSuccess: () => {
 
-      queryClient.invalidateQueries({ queryKey: ['notes', 'adminNotes'] });
+      queryClient.invalidateQueries({ queryKey: ['adminNotes'] });
     },
     onError: () => {
       alert('Error deleting note');

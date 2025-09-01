@@ -4,6 +4,7 @@ import { jwtDecode } from "jwt-decode"
 type UserDetail = {
   username: string | null;
   role: string | null;
+  _id: string | null;
   setUser: (token: string) => void;
   logout: () => void;
 };
@@ -11,6 +12,7 @@ type UserDetail = {
 type JwtPayload = {
   username: string;
   role: string;
+  _id: string
 };
 
 const decodeToken = (token: string): JwtPayload | null => {
@@ -28,6 +30,7 @@ export const useAuthStore = create<UserDetail>((set) => {
   return {
     username: decoded?.username ?? null,
     role: decoded?.role ?? null,
+    _id: decoded?._id ?? null,
 
     setUser: (token: string) => {
       const decoded = decodeToken(token);
@@ -36,13 +39,14 @@ export const useAuthStore = create<UserDetail>((set) => {
         set({
           username: decoded.username,
           role: decoded.role,
+          _id: decoded._id
         });
       }
     },
 
     logout: () => {
       localStorage.removeItem("accessToken");
-      set({ username: null, role: null });
+      set({ username: null, role: null, _id: null });
     },
   };
 });

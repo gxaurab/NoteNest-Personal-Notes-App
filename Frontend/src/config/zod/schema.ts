@@ -41,6 +41,16 @@ export const resetPass = z.object({
 
 export type resetPassType = z.input<typeof resetPass>
 
+// -------Adding Data Schema -----
+
+export const AddNote= z.object({
+  title: z.string().min(4, {message:"Min of 4 characters"}).max(15, {message: "maximum of 15 characters"}),
+  tags: z.string(),
+  body: z.string().min(10, {message: "Minimum of 10 characters"}).max(100, {message: "Maxim of 100 characters"}),
+  category: z.string(),
+})
+
+export type AddNoteType = z.input<typeof AddNote>
 
 
 
